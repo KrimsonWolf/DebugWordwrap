@@ -20,7 +20,7 @@
         <OnPlatform
         x:Key="GridFontSize"
         x:TypeArguments="x:Double">
-            <On Platform="iOS" Value="14"/>
+            <On Platform="iOS" Value="16"/>
             <On Platform="Android" Value="18"/>
         </OnPlatform>
 
@@ -35,7 +35,7 @@
     <Grid
                 Grid.Row="2"
                 Grid.Column="0"
-                Padding="10,0,10,0"
+                Padding="20,0,20,0"
                 RowSpacing="0">
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
