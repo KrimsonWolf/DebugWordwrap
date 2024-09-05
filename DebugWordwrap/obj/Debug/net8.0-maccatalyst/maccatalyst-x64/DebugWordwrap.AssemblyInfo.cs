@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DebugWordwrap")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+f001580dd41da15859e1c880215d7e21f8d1ba66")]
 [assembly: System.Reflection.AssemblyProductAttribute("DebugWordwrap")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DebugWordwrap")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
