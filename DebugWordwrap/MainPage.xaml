@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Wordwrap="clr-namespace:DebugWordwrap;assembly=DebugWordwrap"
+             x:Class="DebugWordwrap.MainPage" >
+
+    <ContentPage.BindingContext>
+        <Wordwrap:MainPageViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <Style
+        x:Key="TableHeaderText"
+        TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="{DynamicResource GridHeaderFontSize}" />
+            <Setter Property="FontFamily" Value="{DynamicResource BlackAppFont}" />
+            <Setter Property="BackgroundColor" Value="{DynamicResource Gray300}" />
+        </Style>
+
+        <OnPlatform
+        x:Key="GridFontSize"
+        x:TypeArguments="x:Double">
+            <On Platform="iOS" Value="14"/>
+            <On Platform="Android" Value="18"/>
+        </OnPlatform>
+
+        <OnPlatform
+        x:Key="GridHeaderFontSize"
+        x:TypeArguments="x:Double">
+            <On Platform="iOS" Value="16"/>
+            <On Platform="Android" Value="18"/>
+        </OnPlatform>
+    </ContentPage.Resources>
+
+    <Grid
+                Grid.Row="2"
+                Grid.Column="0"
+                Padding="10,0,10,0"
+                RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid
+                    Grid.Row="0"
+                    BackgroundColor="{DynamicResource OffBlack}"
+                    ColumnSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3.5*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="2.5*" />
+                <ColumnDefinition Width="{Binding EditColumnWidth}" />
+                <ColumnDefinition Width="{Binding DeleteColumnWidth}" />
+            </Grid.ColumnDefinitions>
+            <Label
+                        Grid.Column="0"       
+                        Padding="10,0"
+                        AutomationId="AdvanceDirectiveItemLabel"
+                        Style="{DynamicResource TableHeaderText}"
+                        LineBreakMode="WordWrap"
+                        Text="Item"
+                        VerticalTextAlignment="Center" />
+            <Label
+                        Grid.Column="1"     
+                        Padding="10,0"
+                        AutomationId="EnteredByLabel"
+                        Style="{DynamicResource TableHeaderText}"
+                        LineBreakMode="WordWrap"
+                        Text="Entered By"
+                        VerticalTextAlignment="Center" />
+            <Label
+                        Grid.Column="2"     
+                        Padding="10,0"
+                        AutomationId="ReceivedDateLabel"
+                        Style="{DynamicResource TableHeaderText}"
+                        LineBreakMode="WordWrap"
+                        Text="Received Date"
+                        VerticalTextAlignment="Center" />
+            <Label
+                        Grid.Column="3"
+                        Padding="10,0"
+                        AutomationId="EndDate"
+                        Style="{DynamicResource TableHeaderText}"
+                        LineBreakMode="WordWrap"
+                        Text="End Date"
+                        VerticalTextAlignment="Center" />
+            <Label
+                        Grid.Column="4"
+                        Padding="10,0"
+                        AutomationId="CopyOnFileLabel"
+                        Style="{DynamicResource TableHeaderText}"
+                        LineBreakMode="WordWrap"
+                        Text="Copy on File"
+                        VerticalTextAlignment="Center" />
+            <Label
+                        Grid.Column="5"
+                        Padding="10,0"
+                        AutomationId="NotesLabel"
+                        Style="{DynamicResource TableHeaderText}"
+                        LineBreakMode="WordWrap"
+                        Text="Notes"
+                        VerticalTextAlignment="Center" />
+            <Label
+                        Grid.Column="6"
+                        Padding="10,0"
+                        AutomationId="EditLabel"
+                        Style="{DynamicResource TableHeaderText}"
+                        IsVisible="{Binding HasPermissonToEditAdvanceDirective}"
+                        LineBreakMode="WordWrap"
+                        Text="Edit"
+                        VerticalTextAlignment="Center" />
+            <Label
+                        Grid.Column="7"
+                        Padding="10,0"
+                        AutomationId="DeleteLabel"
+                        Style="{DynamicResource TableHeaderText}"
+                        IsVisible="{Binding HasPermissonToDeleteAdvanceDirective}"
+                        LineBreakMode="WordWrap"
+                        Text="Delete"
+                        VerticalTextAlignment="Center" />
+        </Grid>
+
+        <ListView
+                    Grid.Row="1"
+                    x:Name="AdvanceDirectivesListTable"
+                    AutomationId="AdvanceDirectivesListTable"
+                    BackgroundColor="{DynamicResource White}"
+                    HasUnevenRows="True"
+                    ItemsSource="{Binding Items}"
+                    SelectedItem="{Binding SelectedAdvanceDirective, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="Wordwrap:AdvanceDirectivesGridData">
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3.5*" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="2.5*" />
+                                <ColumnDefinition Width="{Binding BindingContext.EditColumnWidth, Source={x:Reference AdvanceDirectivesListTable} }" />
+                                <ColumnDefinition Width="{Binding BindingContext.DeleteColumnWidth, Source={x:Reference AdvanceDirectivesListTable} }" />
+                            </Grid.ColumnDefinitions>
+                            <Label
+                                        Grid.Column="0"
+                                        Padding="10,0"
+                                        AutomationId="AdvancedDirectiveItem"
+                                        LineBreakMode="WordWrap"
+                                        FontFamily="{DynamicResource AvenirLight}" 
+                                        FontSize="{DynamicResource GridFontSize}"
+                                        TextColor="{DynamicResource OffBlack}" 
+                                        Text="{Binding Item}"
+                                        VerticalTextAlignment="Center" />
+                            <Label
+                                        Grid.Column="1"
+                                        Padding="10,0"
+                                        AutomationId="EnteredBy"
+                                        LineBreakMode="WordWrap"
+                                        FontFamily="{DynamicResource AvenirLight}" 
+                                        FontSize="{DynamicResource GridFontSize}"
+                                        TextColor="{DynamicResource OffBlack}"                                    
+                                        Text="{Binding EnteredBy}"
+                                        VerticalTextAlignment="Center" />
+                            <Label
+                                        Grid.Column="2"
+                                        Padding="10,0"
+                                        AutomationId="ReceivedDate"
+                                        FontFamily="{DynamicResource AvenirLight}" 
+                                        FontSize="{DynamicResource GridFontSize}"
+                                        TextColor="{DynamicResource OffBlack}"       
+                                        Text="{Binding ReceivedDateString}"
+                                        VerticalTextAlignment="Center" />
+                            <Label
+                                        Grid.Column="3"
+                                        Padding="10,0"
+                                        AutomationId="EndDate"
+                                        FontFamily="{DynamicResource AvenirLight}" 
+                                        FontSize="{DynamicResource GridFontSize}"
+                                        TextColor="{DynamicResource OffBlack}"                                   
+                                        Text="{Binding EndDate}"
+                                        VerticalTextAlignment="Center" />
+                            <Label
+                                        Grid.Column="4"
+                                        Padding="10,0"
+                                        AutomationId="CopyOnFile"
+                                        FontFamily="{DynamicResource AvenirLight}" 
+                                        FontSize="{DynamicResource GridFontSize}"
+                                        TextColor="{DynamicResource OffBlack}"                                     
+                                        Text="{Binding CopyOnFile}"
+                                        VerticalTextAlignment="Center" />
+                            <Label
+                                        Grid.Column="5"
+                                        Padding="10,0"
+                                        AutomationId="Notes"
+                                        LineBreakMode="WordWrap"
+                                        FontFamily="{DynamicResource AvenirLight}" 
+                                        FontSize="{DynamicResource GridFontSize}"
+                                        TextColor="{DynamicResource OffBlack}"                                   
+                                        Text="{Binding Notes}"
+                                        VerticalTextAlignment="Center" />
+                            <ImageButton x:Name="EditButton"
+                                        Grid.Column="6"
+                                        AutomationId="EditButton"  
+                                        HeightRequest="24"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        WidthRequest="24"                                                     
+                                        Style="{DynamicResource EditImageButtonStyle}"
+                                        IsEnabled="{Binding IsEditButtonVisible}"
+                                        IsVisible="{Binding IsEditButtonVisible}" 
+                                        Command="{Binding BindingContext.EditAdvancedDirectivesCommand, Source={x:Reference AdvanceDirectivesListTable} }"
+                                       CommandParameter="{Binding .}"/>
+                            <ImageButton x:Name="DeleteButton"
+                                        Grid.Column="7"
+                                        AutomationId="DeleteButton"  
+                                        HeightRequest="24"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        WidthRequest="24"                                                     
+                                        Style="{DynamicResource ErrorGrayImageButtonStyle}"
+                                        IsEnabled="{Binding IsDeleteButtonVisible}"
+                                        IsVisible="{Binding IsDeleteButtonVisible}"                                                     
+                                        Command="{Binding BindingContext.DeleteAdvancedDirectivesCommand, Source={x:Reference AdvanceDirectivesListTable} }"
+                                        CommandParameter="{Binding .}"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+
+</ContentPage>
