@@ -867,3 +867,7 @@
 /DebugWordwrap/obj/Debug/net8.0-android/android/assets/zh-Hant/Microsoft.Maui.Controls.resources.dll
 /DebugWordwrap/obj/Debug/net8.0-android/android/assets/zh-HK/Microsoft.Maui.Controls.resources.dll
 /DebugWordwrap/obj/Debug/net8.0-android/android/assets/ja/Microsoft.Maui.Controls.resources.dll
+/DebugWordwrap/obj/Debug/net8.0-android/android/src/com/companyname/debugwordwrap/R.java
+/DebugWordwrap/obj/Debug/net8.0-android/android/src/mono/android/app/ApplicationRegistration.java
+/DebugWordwrap/obj/Debug/net8.0-android/android/src/mono/MonoRuntimeProvider.java
+/DebugWordwrap/obj/Debug/net8.0-android/R.txt
