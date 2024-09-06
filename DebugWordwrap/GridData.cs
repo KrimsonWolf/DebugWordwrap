@@ -6,16 +6,84 @@ namespace DebugWordwrap
 {
     public class GridData 
     {
-        public GridData()
+        public GridData(int record)
+        {
+            switch(record)
+            {
+                case 0:
+                    setRecord0();
+                    break;
+                case 1:
+                    setRecord1();
+                    break;
+                case 2:
+                    setRecord2();
+                    break;
+                case 3:
+                    setRecord3();
+                    break;
+                default:
+                    setRecord0();
+                    break;
+            }
+        }
+
+
+        public void setRecord0()
         {
             this.RecordUid = new Guid();
-            this.Item = "Physician Orders for Life-Sustaining Treatment (POLST)";
+            this.Item = "this is a field that ends with a parantheses string.....(like this)";
             this.EnteredBy = "User Name";
             this.ReceivedDate = DateTime.UtcNow.AddDays(-3);
             this.ReceivedDateString = FormatDate(this.ReceivedDate);
             this.EndDate = FormatDate(DateTime.UtcNow.AddDays(30));
             this.CopyOnFile = "No";
-            this.Notes = "This is MAUI Advance Directives Testing.";
+            this.Notes = "This is MAUI testing data ends with a dot.";
+            this.IsDeleteButtonVisible = true;
+            this.IsEditButtonVisible = true;
+        }
+
+
+        public void setRecord1()
+        {
+            this.RecordUid = new Guid();
+            this.Item = "this is a field that ends with a parantheses (like this)";
+            this.EnteredBy = "User Name";
+            this.ReceivedDate = DateTime.UtcNow.AddDays(-3);
+            this.ReceivedDateString = FormatDate(this.ReceivedDate);
+            this.EndDate = FormatDate(DateTime.UtcNow.AddDays(30));
+            this.CopyOnFile = "No";
+            this.Notes = "This is MAUI testing data that ends with a dot.";
+            this.IsDeleteButtonVisible = true;
+            this.IsEditButtonVisible = true;
+        }
+
+
+
+        public void setRecord2()
+        {
+            this.RecordUid = new Guid();
+            this.Item = "this is a field that ends with a parantheses (like this)";
+            this.EnteredBy = "User Name";
+            this.ReceivedDate = DateTime.UtcNow.AddDays(-3);
+            this.ReceivedDateString = FormatDate(this.ReceivedDate);
+            this.EndDate = FormatDate(DateTime.UtcNow.AddDays(30));
+            this.CopyOnFile = "No";
+            this.Notes = "This is MAUI testing data ends with a dot.";
+            this.IsDeleteButtonVisible = true;
+            this.IsEditButtonVisible = true;
+        }
+
+        public void setRecord3()
+        {
+            this.RecordUid = new Guid();
+            this.Item = "this is a field that ends with a parantheses string.....(like this)";
+            this.EnteredBy = "User Name";
+            this.ReceivedDate = DateTime.UtcNow.AddDays(-3);
+            this.ReceivedDateString = FormatDate(this.ReceivedDate);
+            this.EndDate = FormatDate(DateTime.UtcNow.AddDays(30));
+            this.CopyOnFile = "No";
+            this.Notes = "This is MAUI testing data with a dot.";
             this.IsDeleteButtonVisible = true;
             this.IsEditButtonVisible = true;
         }

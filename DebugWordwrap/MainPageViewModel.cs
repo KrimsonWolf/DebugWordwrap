@@ -14,7 +14,8 @@ namespace DebugWordwrap
 
         public MainPageViewModel() 
         {
-            Initialize();
+            LoadGrid();
+            SetCommands();
         }
 
         public ICommand EditCommand { get; private set; }
@@ -51,24 +52,28 @@ namespace DebugWordwrap
             get; set;
         }
 
-        private void Initialize()
+        private void LoadGrid()
         {
             this.Items = new List<GridData>();
 
-            Items.Add(new GridData());
-
-            this.EditCommand = new Command<GridData>(EditData);
-
-            this.DeleteCommand = new Command<GridData>(DeleteData);
-
+            Items.Add(new GridData(0));
+            Items.Add(new GridData(1));
+            Items.Add(new GridData(2));
+            Items.Add(new GridData(3));
         }
 
-        private async void EditData(GridData gridData)
+        private void SetCommands()
+        { 
+            this.EditCommand = new Command<GridData>(EditData);
+            this.DeleteCommand = new Command<GridData>(DeleteData);
+        }
+
+        private void EditData(GridData gridData)
         {
             //ignore tap events
         }
 
-        private async void DeleteData(GridData gridData)
+        private void DeleteData(GridData gridData)
         {
             //ignore tap events
         }
