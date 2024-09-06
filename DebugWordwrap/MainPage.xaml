@@ -48,13 +48,13 @@
                                 <ColumnDefinition Width="2*" />
                                 <ColumnDefinition Width="2*" />
                                 <ColumnDefinition Width="2.5*" />
-                                <ColumnDefinition Width="{Binding BindingContext.EditColumnWidth, Source={x:Reference AdvanceDirectivesListTable} }" />
-                                <ColumnDefinition Width="{Binding BindingContext.DeleteColumnWidth, Source={x:Reference AdvanceDirectivesListTable} }" />
+                                <ColumnDefinition Width="{Binding BindingContext.EditColumnWidth, Source={x:Reference ListTable} }" />
+                                <ColumnDefinition Width="{Binding BindingContext.DeleteColumnWidth, Source={x:Reference ListTable} }" />
                             </Grid.ColumnDefinitions>
                             <Label
                                         Grid.Column="0"
                                         Padding="10,0"
-                                        AutomationId="AdvancedDirectiveItem"
+                                        AutomationId="RowDescription"
                                         LineBreakMode="WordWrap"
                                         FontFamily="{DynamicResource AvenirLight}" 
                                         FontSize="{DynamicResource GridFontSize}"

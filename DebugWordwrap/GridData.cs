@@ -8,7 +8,7 @@ namespace DebugWordwrap
     {
         public GridData()
         {
-            this.AdvanceDirectivesUid = new Guid();
+            this.RecordUid = new Guid();
             this.Item = "Physician Orders for Life-Sustaining Treatment (POLST)";
             this.EnteredBy = "User Name";
             this.ReceivedDate = DateTime.UtcNow.AddDays(-3);
@@ -20,7 +20,7 @@ namespace DebugWordwrap
             this.IsEditButtonVisible = true;
         }
 
-        public Guid AdvanceDirectivesUid { get; set; }
+        public Guid RecordUid { get; set; }
 
         public string Item { get; set; }
 
